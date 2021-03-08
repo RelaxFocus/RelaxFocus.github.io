@@ -16,7 +16,7 @@
 
 
 
-<title>Hello World | relax&amp;focus</title>
+<title>客户端打包 | relax&amp;focus</title>
 
 
 
@@ -177,7 +177,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">客户端打包</h1>
             
                 <div class="post-meta">
                     
@@ -186,7 +186,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 5, 2021&nbsp;&nbsp;10:26:31</a>
+                        Date: <a href="#">March 8, 2021&nbsp;&nbsp;10:30:25</a>
                         </span>
                     
                     
@@ -195,19 +195,33 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+            <p>打包分为pc版本、内网开发、线上测试、正式（包括各个渠道）。</p>
+<p>打包使用jenkins。</p>
+<hr>
+<h3 id="1-pc版本"><a href="#1-pc版本" class="headerlink" title="1.pc版本"></a>1.pc版本</h3><p>目的：</p>
+<p>打一个可在pc端运行的包。可以是主干的，也可以是分支的。</p>
+<p>由于不想暴露源代码，所以要把代码打成一个包。</p>
+<p>参数：</p>
+<blockquote>
+<p>-c –config：trunk（或者分支版本号）</p>
+<p>-p –path：./work</p>
+<p>-o –out：./out</p>
+</blockquote>
+<p>步骤：</p>
+<ol>
+<li>删除上次打包产生的临时文件。</li>
+<li>update svn。</li>
+<li>拷贝src、res、audio文件夹。</li>
+<li>通过 luacompile 命令对 lua 文件进行 XXTEA 加密以及编译为字节码的处理。分为32位、64位2种处理。</li>
+<li>打包资源.assets。</li>
+<li>创建输出文件夹/out/trunk。</li>
+<li>copy一份完整的，删除cocosstudio中除simulator外的文件。删除.svn隐藏文件夹。</li>
+<li>将之前打包好的资源复制成package.assets。</li>
+<li>上传svn。</li>
+</ol>
+<h3 id="2-内网开发版本"><a href="#2-内网开发版本" class="headerlink" title="2.内网开发版本"></a>2.内网开发版本</h3><p>打一个移动端的整包。</p>
+<p>打包过程和pc版本很像，只是另外要根据配置，修改config.lua。</p>
+<p>如果是android版本，要加入android-sdk。</p>
 
         </div>
 
@@ -235,8 +249,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/03/08/%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%89%93%E5%8C%85/">客户端打包</a>
             
+            <a class="next" rel="next" href="/2021/03/05/hello-world/">Hello World</a>
             
         </section>
 
